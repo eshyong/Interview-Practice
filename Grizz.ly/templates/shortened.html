@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            div {
+                font-family: "Monaco";
+                font-size: 16px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <div>
+        {% if url %}
+            <p>Here's your link, fresh from the oven!</p>
+            <a href={{url}}>grizz.ly:5000/{{url}}</a>
+        {% endif %}
+    </div>
+</html>
