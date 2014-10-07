@@ -7,9 +7,6 @@ app = Flask(__name__)
 # URL to usage count
 url_counts = {}
 
-# URL to hashed
-url_hashes = {}
-
 # hashed to URL
 url_originals = {}
 
@@ -42,8 +39,7 @@ def shorten_url(string):
 
     # Get hash of url
     short_url = hashlib.md5(string).hexdigest()[:7]
-    if string not in url_hashes:
-        url_hashes[string] = short_url
+    if short_url not in url_originals:
         url_originals[short_url] = string
     return short_url
 
