@@ -1,3 +1,6 @@
+import signal
+import sys
+
 def palind_in_str(string):
     i = 0
     largest = ''
@@ -28,6 +31,11 @@ def palind_in_str(string):
         i += 1
     return largest
 
+def handler(signum, frame):
+    print 'SIGINT called'
+    sys.exit(0)
+
+signal.signal(signal.SIGINT, handler)
 
 while True:
     input_str = raw_input()

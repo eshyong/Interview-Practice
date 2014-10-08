@@ -18,29 +18,12 @@ def smallest_distance(small_list, large_list):
             # Only increment i if we find a larger item in the bigger list. We know that 
             # both lists are sorted, and that large_list[j+1] >= large_list[j], therefore
             # large_list[j+1] - small_list[i] >= large_list[j] - small_list[i], so we
-            # continue in the small list.
+            # continue in the small list. This also ensures that the algorithm terminates early.
             i += 1
         else:
             # Early return, means we have a duplicate.
             return (small_list[min_i], large_list[min_j], 0)
 
-    # If we have remaining elements in the small list.
-    while i < len(small_list):
-        distance = int(math.fabs(small_list[i] - large_list[j-1]))
-        if min_dist > distance:
-            min_dist = distance
-            min_i = i
-            min_j = j - 1
-        i += 1
-
-    # If we have remaining elements in the large list.
-    while j < len(large_list):
-        distance = int(math.fabs(small_list[i-1] - large_list[j]))
-        if min_dist > distance:
-            min_dist = distance
-            min_i = i - 1
-            min_j = j
-        j += 1
     # Return a tuple.
     return (small_list[min_i], large_list[min_j], min_dist)
 
